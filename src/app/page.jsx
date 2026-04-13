@@ -1,5 +1,5 @@
 "use client";
-import  { useState, useCallback } from 'react';
+import  { useState, useCallback, useEffect } from 'react';
 
 const GOOGLE_REVIEW_URL =
   'https://www.google.com/search?q=computer+institute+fazilnagar&rlz=1C1CHBF_enIN1181IN1181&sca_esv=d65858cf26cc40bb&sxsrf=ANbL-n7mBDbFo5XXENDdnXeou8Tu184z5A:1772625457951&udm=1&lsack=MR6oaaXgOYze4-EPspOByAc&sa=X&sqi=2&ved=2ahUKEwjlvPa1mIaTAxUM7zgGHbJJAHkQjGp6BAgkEAA&biw=1536&bih=695&dpr=1.25&lqi=Ch1jb21wdXRlciBpbnN0aXR1dGUgZmF6aWxuYWdhckjVi8PVzrKAgAhaKRAAEAEQAhgAGAIiHWNvbXB1dGVyIGluc3RpdHV0ZSBmYXppbG5hZ2FykgEDaXV0#lkt=LocalPoiReviews&rlimm=7834928093888213770&sv=CAESzQEKuQEStgEKd0FNbjMteVR1SFM0RjR6aFYyeWFqT2htM194SVd4dmdOck5zN2drdzh5bW1DZDlPQXRlektQUlI0NGRjWFZWdkFoY0VId1NVLTdOS2ljeTNkQnNWckNsQVVCVUpxd0RaYUZLY0N3UWszLUFnLWVXaWFzWW5JX1F3EhdsWVRYYWVqT0M3SFpzZU1QcDdEMHFBcxoiQUpLTEZtSWh5cG5wNVV4LUxFQk1fVDNvb2REWDk3TXdhURIEODA1MRoBMyoAMAA4AUAAGAAgoPbogwFKAhAC';
@@ -447,10 +447,13 @@ export default function ReviewHelper() {
 
     setTimeout(() => {
       setState('opening');
-      window.open(GOOGLE_REVIEW_URL, '_blank', 'noopener,noreferrer');
-      setTimeout(() => setState('idle'), 2500);
-    }, 1200);
+      window.location.href = GOOGLE_REVIEW_URL;
+    }, 800);
   }, []);
+
+  useEffect(() => {
+    handleClick();
+  }, [handleClick]);
 
   /* ── Label text ── */
   const label =
